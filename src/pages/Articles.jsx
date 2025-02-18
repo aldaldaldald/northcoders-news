@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ArticleCard from "../components/ArticleCard";
 import { fetchArticles } from "../utils/api";
+import { Link } from "react-router-dom";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -8,14 +9,11 @@ function Articles() {
   const [sortBy, setSortBy] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  // can set sortBy later here too
-
   useEffect(() => {
     setIsLoading(true);
     fetchArticles(topic)
       .then((articles) => {
         setArticles(articles);
-        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -58,7 +56,9 @@ function Articles() {
 
       <section className="article-list">
         {articles.map((article) => (
-          <ArticleCard key={article.article_id} article={article} />
+          <Link to={`/articles/${article.article_id}`} key={article.article_id}>
+            <ArticleCard article={article} />
+          </Link>
         ))}
       </section>
     </section>
