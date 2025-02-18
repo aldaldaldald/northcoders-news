@@ -21,6 +21,14 @@
   margin: 0 16px;
 }
 
+.company-logo {
+  color: #d83731;
+}
+
+.company-logo:hover {
+  color: #aa2a26;
+}
+
 .article-card {
   background-color: #1e1e1e;
   width: 400px;
@@ -30,6 +38,13 @@
 }
 
 .article-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-article {
   display: flex;
   flex-direction: column;
   justify-content: center;
