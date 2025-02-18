@@ -21,15 +21,11 @@
   margin: 0 16px;
 }
 
-.article-card-list {
-  margin-top: 12px;
-}
-
 .article-card {
   background-color: #1e1e1e;
   width: 400px;
   border-radius: 12px;
-  margin-bottom: 12px;
+  margin: 12px 12px;
   padding: 12px;
 }
 
