@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchSingleArticle, fetchArticleComments } from "../utils/api";
-import { Link } from "react-router-dom";
+import VotesCounter from "../components/LikesCounter";
 import CommentCard from "../components/CommentCard";
 
 function Article() {
@@ -53,6 +53,7 @@ function Article() {
           src={article.article_img_url === "" ? null : article.article_img_url}
         ></img>
         <p>{article.body}</p>
+        <VotesCounter article={article}></VotesCounter>
         <button>Vote</button>
         <button>Add a comment</button>
         <button>Sort by</button>
