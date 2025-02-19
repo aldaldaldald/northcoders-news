@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchSingleArticle } from "../utils/api";
+import { fetchSingleArticle, fetchArticleComments } from "../utils/api";
+import { Link } from "react-router-dom";
+import CommentCard from "../components/CommentCard";
 
 function Article() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
+  const [comments, setArticleComments] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,13 +18,22 @@ function Article() {
       })
       .catch((error) => {
         console.log(error);
+      });
+
+    fetchArticleComments(article_id)
+      .then((response) => {
+        setArticleComments(response.comments);
       })
+      .catch((error) => {
+        console.log(error);
+      })
+
       .finally(() => {
         setIsLoading(false);
       });
   }, [article_id]);
 
-  if (isLoading) {
+  if (isLoading || !article) {
     return <p>Loading...</p>;
   }
 
@@ -47,7 +59,15 @@ function Article() {
         <p>Votes {article.votes}</p>
         <p>Comments {article.comment_count}</p>
         <br></br>
-        <p>Comments section</p>
+        <section className="comment-list">
+          {comments.map((comment) => (
+            <CommentCard
+              article={article}
+              comment={comment}
+              key={comment.comment_id}
+            />
+          ))}
+        </section>
       </div>
     </section>
   );

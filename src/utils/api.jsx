@@ -27,3 +27,14 @@ export const fetchSingleArticle = (article_id) => {
       // handle error
     });
 };
+
+export const fetchArticleComments = (article_id) => {
+  return apiClient
+    .get(`/articles/${article_id}/comments`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      // handle error
+    });
+};
