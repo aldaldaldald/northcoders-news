@@ -1,5 +1,4 @@
 function ArticleCard({ article }) {
-  console.log(article);
   return (
     <div key={article.article_id} className="article-card">
       <div>
