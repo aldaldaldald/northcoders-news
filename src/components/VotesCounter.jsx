@@ -11,12 +11,12 @@ const VotesCounter = ({ article }) => {
 
     let inc_votes = hasVoted ? -1 : 1;
 
-    setVotesCount((currentLikesCount) => currentLikesCount + inc_votes);
+    setVotesCount((currentVotesCount) => currentVotesCount + inc_votes);
     setHasVoted(!hasVoted);
 
     patchVoteCount(article.article_id, inc_votes).catch((err) => {
-      setVotesCount((currentLikesCount) => currentLikesCount - 1);
-      setError("Your like was not successful. Please try again!");
+      setVotesCount((currentVotesCount) => currentVotesCount - 1);
+      setError("Your vote was not successful. Please try again!");
     });
   };
 
