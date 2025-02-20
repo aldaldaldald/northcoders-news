@@ -61,3 +61,11 @@ export const patchVoteCount = (article_id, inc_votes) => {
       // handle error
     });
 };
+
+export const postComment = (commentData) => {
+  return apiClient
+    .post(`/articles/${commentData.article_id}/comments`, commentData)
+    .then((response) => {
+      return response.data.comment;
+    });
+};
