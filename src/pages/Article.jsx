@@ -1,9 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchSingleArticle, fetchArticleComments } from "../utils/api";
-import VotesCounter from "../components/LikesCounter";
-import CommentCard from "../components/CommentCard";
-import CommentForm from "../components/CommentForm";
+import { fetchSingleArticle } from "../utils/api";
+import VotesCounter from "../components/VotesCounter";
 import Comments from "../components/Comments";
 
 function Article() {
