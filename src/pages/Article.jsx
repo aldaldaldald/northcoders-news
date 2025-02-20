@@ -3,31 +3,24 @@ import { useState, useEffect } from "react";
 import { fetchSingleArticle, fetchArticleComments } from "../utils/api";
 import VotesCounter from "../components/LikesCounter";
 import CommentCard from "../components/CommentCard";
+import CommentForm from "../components/CommentForm";
+import Comments from "../components/Comments";
 
 function Article() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
-  const [comments, setArticleComments] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
+
     fetchSingleArticle(article_id)
       .then((response) => {
         setArticle(response.article);
       })
       .catch((error) => {
         console.log(error);
-      });
-
-    fetchArticleComments(article_id)
-      .then((response) => {
-        setArticleComments(response.comments);
       })
-      .catch((error) => {
-        console.log(error);
-      })
-
       .finally(() => {
         setIsLoading(false);
       });
@@ -54,21 +47,7 @@ function Article() {
         ></img>
         <p>{article.body}</p>
         <VotesCounter article={article}></VotesCounter>
-        <button>Vote</button>
-        <button>Add a comment</button>
-        <button>Sort by</button>
-        <p>Votes {article.votes}</p>
-        <p>Comments {article.comment_count}</p>
-        <br></br>
-        <section className="comment-list">
-          {comments.map((comment) => (
-            <CommentCard
-              article={article}
-              comment={comment}
-              key={comment.comment_id}
-            />
-          ))}
-        </section>
+        <Comments article={article}></Comments>
       </div>
     </section>
   );
