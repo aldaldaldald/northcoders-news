@@ -38,6 +38,7 @@ export default function Comments({ article }) {
             article={article}
             comment={comment}
             key={comment.comment_id}
+            setArticleComments={setArticleComments}
           />
         ))}
       </section>

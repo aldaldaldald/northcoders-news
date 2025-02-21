@@ -69,3 +69,15 @@ export const postComment = (commentData) => {
       return response.data.comment;
     });
 };
+
+export const deleteComment = (comment_id) => {
+  return apiClient.delete(`/comments/${comment_id}`).then((response) => {
+    return response.data.comment;
+  });
+};
+
+export const fetchUsers = () => {
+  return apiClient.get(`/users`).then((response) => {
+    return response.data;
+  });
+};
