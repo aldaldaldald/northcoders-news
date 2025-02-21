@@ -32,7 +32,7 @@ function Articles() {
   }, [searchParams]);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p>...</p>;
   }
 
   function handleTopicChange(event) {

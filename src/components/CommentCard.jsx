@@ -1,5 +1,5 @@
 import { useUser } from "../contexts/Users";
-import { deleteComment, fetchUsers } from "../utils/api";
+import { deleteComment } from "../utils/api";
 
 function CommentCard({ article, comment, setArticleComments }) {
   const { user, users } = useUser();
@@ -9,15 +9,11 @@ function CommentCard({ article, comment, setArticleComments }) {
   const handleDelete = () => {
     deleteComment(comment.comment_id)
       .then(() => {
-        setArticleComments((previousComments) => {
-          const updatedComments = [];
-          for (let i = 0; i < previousComments.length; i++) {
-            if (previousComments[i].comment_id !== comment.comment_id) {
-              updatedComments.push(previousComments[i]);
-            }
-          }
-          return updatedComments;
-        });
+        setArticleComments((previousComments) =>
+          previousComments.filter(
+            (comment) => comment.comment_id !== comment.comment_id
+          )
+        );
       })
       .catch((error) => {
         // handle error

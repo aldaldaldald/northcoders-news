@@ -14,7 +14,7 @@ function NavigationBar() {
         <Link to={`/`} className="company-logo">
           <h1>Northcoders News</h1>
         </Link>
-        <Link to={`/users/cooljmessy`} className="company-logo">
+        <Link to={`/users/${user?.username}`}>
           <img
             src={
               user ? user.avatar_url : "/src/assets/Portrait_Placeholder.png"

@@ -18,6 +18,7 @@ function ArticleCard({ article }) {
         ></img>
         <p>{article.author}</p>
         <p>Created at {article.created_at}</p>
+        <p>{article.topic}</p>
       </div>
       <p>{article.title}</p>
       <img

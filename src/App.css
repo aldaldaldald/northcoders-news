@@ -9,6 +9,11 @@
   flex-direction: column;
 }
 
+.status-bar {
+  background-color: #ff9d00;
+  color: #1e1e1e;
+}
+
 .navigation-bar {
   background-color: #1e1e1e;
 }

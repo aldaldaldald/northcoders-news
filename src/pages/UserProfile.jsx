@@ -5,7 +5,7 @@ function UserProfile() {
   const { user } = useContext(UserContext);
 
   if (!user) {
-    return <p>Loading user profile...</p>; // or a fallback UI
+    return <p>Loading user profile...</p>;
   }
 
   return (

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
+import { useUser } from "../contexts/Users";
 
 export default function CommentForm({ article, setArticleComments }) {
   const [commentBody, setCommentBody] = useState("");
+  const { user } = useUser();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -10,7 +12,7 @@ export default function CommentForm({ article, setArticleComments }) {
     const commentData = {
       body: commentBody,
       article_id: article.article_id,
-      username: "cooljmessy",
+      username: user.username,
     };
 
     postComment(commentData)
