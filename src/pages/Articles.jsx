@@ -11,9 +11,9 @@ function Articles() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchArticles(topic)
+    fetchArticles()
       .then((articles) => {
-        setArticles(articles);
+        setArticles(articles || []);
       })
       .catch((error) => {
         console.log(error);
