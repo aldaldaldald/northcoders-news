@@ -23,7 +23,7 @@
   justify-content: space-between;
   align-items: center;
   color: #d83731;
-  margin: 0 16px;
+  margin: 0 32px;
 }
 
 .company-logo {
@@ -58,16 +58,17 @@
 }
 
 .user-profile-picture {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  border-radius: 16px;
+  border: 1px solid #000000;
 }
 
 .article-image {
-  height: 200px;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  border-radius: 16px;
 }
 
 .comment {
@@ -77,4 +78,47 @@
 
 .button-delete {
   background-color: #ff0800;
+}
+
+.article-info {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dropdowns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropdown-pill {
+  text-align: center;
+  border-radius: 20px;
+  padding: 12px;
+  width: 206px;
+  appearance: none;
+  margin-bottom: 24px;
+}
+
+.pill {
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #0f0f0f;
+}
+
+.article-creator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  gap: 20px;
+  border-bottom: 1px solid #aeaeae24;
+  padding-bottom: 12px;
+  filter: brightness(60%);
+}
+
+.article-title {
+  font-size: 24px;
 }

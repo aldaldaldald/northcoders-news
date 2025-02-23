@@ -7,7 +7,7 @@ export default function ArticleFilters({
 }) {
   return (
     <div className="dropdowns">
-      <select onChange={handleSortByChange}>
+      <select onChange={handleSortByChange} className="dropdown-pill">
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
         <option value="most-votes">Most votes</option>
@@ -16,8 +16,11 @@ export default function ArticleFilters({
         <option value="least-commented">Least commented</option>
       </select>
 
-      <br />
-      <select onChange={handleTopicChange} value={currentTopic}>
+      <select
+        onChange={handleTopicChange}
+        value={currentTopic}
+        className="dropdown-pill"
+      >
         <option value="all-topics">All topics</option>
         <option value="football">Football</option>
         <option value="coding">Coding</option>

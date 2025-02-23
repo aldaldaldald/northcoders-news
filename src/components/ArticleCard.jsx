@@ -5,28 +5,34 @@ function ArticleCard({ article }) {
 
   const articleAuthor = users.find((user) => user.username === article.author);
 
+  const shortDate = article.created_at.slice(0, 10);
+
   return (
     <div key={article.article_id} className="article-card">
-      <div>
-        <img
+      <div className="article-creator">
+        {/* <img
           src={
             articleAuthor
               ? articleAuthor.avatar_url
               : "/src/assets/Portrait_Placeholder.png"
           }
           className="user-profile-picture"
-        ></img>
+        ></img> */}
         <p>{article.author}</p>
-        <p>Created at {article.created_at}</p>
+
+        <p>{shortDate}</p>
         <p>{article.topic}</p>
       </div>
-      <p>{article.title}</p>
+
+      <p className="article-title">{article.title}</p>
       <img
         src={article.article_img_url === "" ? null : article.article_img_url}
         className="article-image"
       ></img>
-      <p>Votes {article.votes}</p>
-      <p>Comments {article.comment_count}</p>
+      <div className="article-info">
+        <p className="pill">Votes {article.votes}</p>
+        <p className="pill">Comments {article.comment_count}</p>
+      </div>
     </div>
   );
 }
