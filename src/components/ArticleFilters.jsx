@@ -4,10 +4,15 @@ export default function ArticleFilters({
   handleTopicChange,
   handleSortByChange,
   currentTopic,
+  currentSortBy,
 }) {
   return (
     <div className="dropdowns">
-      <select onChange={handleSortByChange} className="dropdown-pill">
+      <select
+        onChange={handleSortByChange}
+        className="dropdown-pill"
+        value={currentSortBy}
+      >
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
         <option value="most-votes">Most votes</option>

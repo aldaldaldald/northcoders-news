@@ -5,6 +5,7 @@ import Article from "./pages/Article";
 import UserProfile from "./pages/UserProfile";
 import { useUser } from "./contexts/Users";
 import { Routes, Route } from "react-router-dom";
+import NotFound from "./components/NotFound";
 
 function App() {
   const { user } = useUser();
@@ -18,6 +19,7 @@ function App() {
         {user && (
           <Route path={`/users/${user.username}`} element={<UserProfile />} />
         )}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

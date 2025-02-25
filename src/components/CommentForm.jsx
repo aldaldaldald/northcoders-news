@@ -33,14 +33,16 @@ export default function CommentForm({ article, setArticleComments }) {
       <label>
         <textarea
           name="postContent"
+          className="comment-field"
           value={commentBody}
           onChange={(e) => setCommentBody(e.target.value)}
           placeholder="Add a comment"
           rows={4}
-          cols={48}
         />
       </label>
-      <button type="submit">Post comment</button>
+      <button className="pill-comment" type="submit">
+        Post comment
+      </button>
     </form>
   );
 }

@@ -22,16 +22,12 @@ export default function Comments({ article }) {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   return (
     <section>
       <CommentForm article={article} setArticleComments={setArticleComments} />
-      <button>Sort by</button>
-      <p>Votes {article.votes}</p>
-      <p>Comments {article.comment_count}</p>
-      <br></br>
       <section className="comment-list">
         {comments.map((comment) => (
           <CommentCard

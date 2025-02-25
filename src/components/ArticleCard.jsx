@@ -19,19 +19,21 @@ function ArticleCard({ article }) {
           className="user-profile-picture"
         ></img> */}
         <p>{article.author}</p>
-
+        <p>·</p>
         <p>{shortDate}</p>
+        <p>·</p>
         <p>{article.topic}</p>
       </div>
 
-      <p className="article-title">{article.title}</p>
+      <h2>{article.title}</h2>
       <img
         src={article.article_img_url === "" ? null : article.article_img_url}
         className="article-image"
       ></img>
       <div className="article-info">
-        <p className="pill">Votes {article.votes}</p>
-        <p className="pill">Comments {article.comment_count}</p>
+        <p>{article.votes} votes</p>
+        <p>·</p>
+        <p>{article.comment_count} comments</p>
       </div>
     </div>
   );

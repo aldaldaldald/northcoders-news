@@ -22,11 +22,10 @@ const VotesCounter = ({ article }) => {
 
   return (
     <div>
-      <button onClick={handleVote}>
-        {hasVoted === false ? <p>Upvote</p> : <p>Remove vote</p>}
+      <button className="pill-upvote" onClick={handleVote}>
+        {!hasVoted ? <p>Upvote</p> : <p>Remove vote</p>}
       </button>
       {error ? <p>{error}</p> : null}
-      <p>{votesCount}</p>
     </div>
   );
 };

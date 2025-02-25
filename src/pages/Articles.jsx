@@ -8,6 +8,7 @@ function Articles() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [sortBy, setSortBy] = useState("newest");
 
   useEffect(() => {
     const topicFromQuery = searchParams.get("topic") || "all-topics";
@@ -21,18 +22,42 @@ function Articles() {
             : fetchedArticles.filter(
                 (article) => article.topic === topicFromQuery
               );
-        setArticles(filteredArticles || []);
+
+        const sortedArticles = [...filteredArticles].sort((a, b) => {
+          switch (sortBy) {
+            case "newest":
+              return new Date(b.created_at) - new Date(a.created_at);
+            case "oldest":
+              return new Date(a.created_at) - new Date(b.created_at);
+            case "most-votes":
+              return Number(b.votes) - Number(a.votes);
+            case "least-votes":
+              return Number(a.votes) - Number(b.votes);
+            case "most-commented":
+              return b.comment_count - a.comment_count;
+            case "least-commented":
+              return a.comment_count - b.comment_count;
+            default:
+              return 0;
+          }
+        });
+
+        setArticles(sortedArticles);
       })
       .catch((error) => {
-        // handle errors
+        console.error("Error fetching articles:", error);
       })
       .finally(() => {
         setIsLoading(false);
       });
-  }, [searchParams]);
+  }, [searchParams, sortBy]);
 
   if (isLoading) {
-    return <p>...</p>;
+    return <p className="loading">Loading...</p>;
+  }
+
+  if (articles.length === 0) {
+    return <p>No articles found.</p>;
   }
 
   function handleTopicChange(event) {
@@ -40,9 +65,9 @@ function Articles() {
     setSearchParams({ topic: selectedTopic });
   }
 
-  const handleSortByChange = (event) => {
+  function handleSortByChange(event) {
     setSortBy(event.target.value);
-  };
+  }
 
   return (
     <section className="articles">
@@ -51,6 +76,7 @@ function Articles() {
         handleTopicChange={handleTopicChange}
         handleSortByChange={handleSortByChange}
         currentTopic={searchParams.get("topic") || "all-topics"}
+        currentSortBy={sortBy}
       />
       <section className="article-list">
         {articles.map((article) => (

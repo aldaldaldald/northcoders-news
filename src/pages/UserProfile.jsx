@@ -5,20 +5,23 @@ function UserProfile() {
   const { user } = useContext(UserContext);
 
   if (!user) {
-    return <p>Loading user profile...</p>;
+    return <p className="loading">Fetching user profile...</p>;
   }
 
   return (
-    <section>
-      <br></br>
-      <img
-        src={user.avatar_url}
-        alt="/src/assets/Portrait_Placeholder.png"
-        className="user-profile-picture"
-      ></img>
-      <p>{user.username}</p>
-      <p>{user.name}</p>
-      <p>My articles...</p>
+    <section className="user-profile">
+      <h1>User profile</h1>
+      <section className="user-profile-card">
+        <img
+          src={user.avatar_url}
+          alt="/src/assets/Portrait_Placeholder.png"
+          className="user-page-profile-picture"
+        ></img>
+        <p className="dim">Username</p>
+        <p>{user.username}</p>
+        <p className="brightness">Name</p>
+        <p>{user.name}</p>
+      </section>
     </section>
   );
 }

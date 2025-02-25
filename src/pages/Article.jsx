@@ -9,7 +9,7 @@ function Article() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const { users } = useUser();
+  const { users = [] } = useUser();
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,42 +19,56 @@ function Article() {
         setArticle(response.article);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Error fetching article:", error);
+        setArticle(null);
       })
       .finally(() => {
         setIsLoading(false);
       });
   }, [article_id]);
 
-  if (isLoading || !article) {
-    return <p>Loading...</p>;
+  if (isLoading) {
+    return <p className="loading">Loading...</p>;
+  }
+
+  if (!article) {
+    return <p className="error">Failed to load article.</p>;
   }
 
   const articleAuthor = users.find((user) => user.username === article.author);
+  const shortDate = article.created_at?.slice(0, 10);
 
   return (
     <section className="single-article">
       <div key={article.article_id} className="article-card">
-        <div>
+        <div className="user-card-top-header">
           <img
             src={
-              articleAuthor
-                ? articleAuthor.avatar_url
-                : "/src/assets/Portrait_Placeholder.png"
+              articleAuthor?.avatar_url ||
+              "/src/assets/Portrait_Placeholder.png"
             }
             className="user-profile-picture"
-          ></img>
+            alt="Author"
+          />
           <p>{article.author}</p>
-          <p>Created at {article.created_at}</p>
+          <p>Created at {shortDate}</p>
         </div>
-        <p>{article.title}</p>
-        <img
-          src={article.article_img_url === "" ? null : article.article_img_url}
-          className="article-image"
-        ></img>
-        <p>{article.body}</p>
-        <VotesCounter article={article}></VotesCounter>
-        <Comments article={article}></Comments>
+        <h2>{article.title}</h2>
+        {article.article_img_url && (
+          <img
+            src={article.article_img_url}
+            className="article-image"
+            alt="Article"
+          />
+        )}
+        <p className="body">{article.body}</p>
+        <VotesCounter article={article} />
+        <div className="article-info-creator">
+          <p>{article.votes} votes</p>
+          <p>·</p>
+          <p>{article.comment_count} comments</p>
+        </div>
+        <Comments article={article} />
       </div>
     </section>
   );

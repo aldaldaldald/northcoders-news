@@ -5,7 +5,7 @@ function NavigationBar() {
   const { user, isLoading } = useUser();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
   return (
