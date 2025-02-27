@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useUser } from "../contexts/Users";
+import portraitPlaceholder from "../assets/Portrait_Placeholder.png";
 
 function NavigationBar() {
   const { user, isLoading } = useUser();
@@ -16,7 +17,7 @@ function NavigationBar() {
         </Link>
         <Link to={`/users/${user?.username}`}>
           <img
-            src={user ? user.avatar_url : "../assets/Portrait_Placeholder.png"}
+            src={user ? user.avatar_url : portraitPlaceholder}
             className="user-profile-picture"
           ></img>
         </Link>
