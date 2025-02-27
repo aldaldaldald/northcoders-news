@@ -16,9 +16,7 @@ function NavigationBar() {
         </Link>
         <Link to={`/users/${user?.username}`}>
           <img
-            src={
-              user ? user.avatar_url : "/src/assets/Portrait_Placeholder.png"
-            }
+            src={user ? user.avatar_url : "../assets/Portrait_Placeholder.png"}
             className="user-profile-picture"
           ></img>
         </Link>

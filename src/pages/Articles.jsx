@@ -57,7 +57,11 @@ function Articles() {
   }
 
   if (articles.length === 0) {
-    return <p>No articles found.</p>;
+    return (
+      <p className="loading">
+        Please refresh a few times to wake up the server.
+      </p>
+    );
   }
 
   function handleTopicChange(event) {

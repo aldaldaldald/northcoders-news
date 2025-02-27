@@ -10,6 +10,8 @@ API Link: https://be-nc-news-r5rg.onrender.com
 
 Northcoders News is a React app that lets users browse, read, and interact with news articles. It fetches data from a backend API built with Node.js and Express, hosted on Render, with a database on Supabase. The backend is tested with Jest and Supertest for reliability. Styled with CSS, users can explore articles by topic, sort them by votes, comments, or date (in ascending or descending order), vote on articles (and remove their vote), and post or delete their own comments. To use the app, start by browsing the homepage or filtering by topic, then click on an article to read more, vote, or post a comment. The users profile can be viewed in the corner of the page, and is hardcoded as logged in, allowing them to delete their own comments after posting.
 
+If the site does not load right away, please try refreshing the page a few times. It may take a bit longer to load if the server has been inactive for a while.
+
 ---
 
 ## Built With
